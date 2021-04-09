@@ -9,11 +9,6 @@ const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
     if(error instanceof ValidationError){
         let errors: ValidationErrors = {};
 
-        /*error.inner.forEach(err => {
-            errors[err.path] = err.errors
-        });*/
-
-
         return response.status(400).json({ message: 'Validations fail', errors })
     }
     
