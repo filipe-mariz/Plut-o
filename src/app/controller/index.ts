@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
 import Service from '../model/index';
+import serviceView from '../view/index';
 
 export default {
     async index(req: Request, res: Response) {
@@ -66,5 +67,28 @@ export default {
             message: 'ACCEPT'
         })
 
+    },
+
+    async view (req: Request, res: Response) {
+
+      const serviceRepository = getRepository(Service)
+      const service = await serviceRepository.find();
+      return res.json(serviceView.renderMany(service));
+
+    },
+
+    async viewOne(req: Request, res: Response) {
+
+      const { id } = req.params
+      const serviceRepository = getRepository(Service)
+      const service = await serviceRepository.findOne(id);
+      return res.json(serviceView.Render(service));
+
+    },
+
+    async destroy(req: Request, res: Response) {
+      const delet = await getRepository(Service).delete(req.params.id)
+
+      return res.json({mesage: "User successfully deleted"})
     }
 }
