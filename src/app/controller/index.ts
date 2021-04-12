@@ -20,7 +20,7 @@ export default {
                 problem: 'the marketStatus field was marked as "closed"',
                 solution: 'change the marketStatus field to open'
             })
-        }
+        }        
 
         if ((price == 1.01) || (price == 1000)) {
             return res.status(400).json({
