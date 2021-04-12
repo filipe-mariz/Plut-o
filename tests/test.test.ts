@@ -1,6 +1,3 @@
-import request from 'supertest';
-import app from '../src/app';
-import Service from '../src/app/model/index'
 
 describe("Valtidators", () => {
     it("if the marketStatus has false, must return status 400", async () => {
