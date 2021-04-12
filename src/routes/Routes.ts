@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Service from '../app/controller/index'
+import Service from '../app/controller/crud'
 
 const routes = Router();
 
